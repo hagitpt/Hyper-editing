@@ -245,7 +245,16 @@ while (<$InFile>)
 	$count_orig_wo_reg_R{$mm_types{$edit_type}}++;
 
     my @edit_sites = split (";",$edit_loc);
-    my @qualities = split (//,$Fields[10]);
+	my @qual = split (//,$Fields[10]);
+	my @qualities;
+	if($read_sign eq "-") 
+    {
+		@qualities = reverse @qual;
+    }
+	else
+	{
+		@qualities = @qual;
+	} 
     my @sites2splice = ();
     
 	# record sites with low qual
